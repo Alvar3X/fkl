@@ -7,7 +7,7 @@ Nació en papel, con losetas, fichas y dados. Caza criaturas, crea tu arma y sob
 ## Jugar
 
 - **Página oficial:** https://alvar3x.github.io/fkl/
-- **Android (APK):** https://aakpqmqmlafzuwofuzgr.supabase.co/storage/v1/object/public/fkl/fkl-arena-13.11.apk
+- **Android (APK):** https://aakpqmqmlafzuwofuzgr.supabase.co/storage/v1/object/public/fkl/fkl-arena.apk
 - **Web e iOS (navegador):** https://alvar3x.github.io/fkl/jugar/
 
 La app y la versión web se actualizan solas con cada versión nueva.
