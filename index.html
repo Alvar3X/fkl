@@ -1,34 +1,48 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="FKL Arena">
 <meta name="theme-color" content="#120c0b">
-<link rel="apple-touch-icon" href="https://aakpqmqmlafzuwofuzgr.supabase.co/storage/v1/object/public/fkl/gimg/icon-192.png">
-<title>FKL Arena</title>
-<style>html,body{margin:0;height:100%;background:#120c0b;color:#f4ede5;font-family:system-ui,-apple-system,Roboto,Arial,sans-serif}
-#s{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:24px;box-sizing:border-box}
-#s b{letter-spacing:.3em;font-size:22px}#s small{color:#b4a79c;font-size:14px;max-width:300px;line-height:1.4}
-#s i{width:34px;height:34px;border-radius:50%;border:3px solid #3b2f2c;border-top-color:#f08a4a;animation:r 1s linear infinite}@keyframes r{to{transform:rotate(1turn)}}
-#s button{margin-top:6px;padding:12px 22px;border-radius:12px;border:0;font-weight:800;font-size:15px;background:linear-gradient(#f08a4a,#e2652a);color:#1a0d06}</style>
-</head><body><div id="s"><b>FKL ARENA</b><i></i><small id="m">Cargando la última versión…</small></div>
-<script>
-(function(){
-  var U='https://aakpqmqmlafzuwofuzgr.supabase.co/storage/v1/object/public/fkl/';
-  var K='fkl-web-h',KV='fkl-web-v';
-  function run(h){document.open();document.write(h);document.close();}
-  function cached(){try{var h=localStorage.getItem(K);if(h){run(h);return true;}}catch(e){}return false;}
-  function fail(){if(cached())return;document.getElementById('m').innerHTML='No se pudo cargar el juego. Revisa tu conexión.<br><button onclick="location.reload()">Reintentar</button>';}
-  var t=Date.now();
-  fetch(U+'version.json?t='+t,{cache:'no-store'}).then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(j){
-    var f=j.f||('fkl-arena-'+j.v+'.html');
-    try{if(localStorage.getItem(KV)===j.v){var h0=localStorage.getItem(K);if(h0&&h0.indexOf("const BUILD='"+j.v+"'")>=0)return run(h0);}}catch(e){}
-    return fetch(U+f+'?t='+t,{cache:'no-store'}).then(function(r){if(!r.ok)throw 0;return r.text();}).then(function(h){
-      if(h.indexOf("const BUILD='"+j.v+"'")<0)throw 0;
-      try{localStorage.removeItem('fkl-ota-h');localStorage.removeItem('fkl-ota-v');localStorage.setItem(K,h);localStorage.setItem(KV,j.v);}catch(e){try{localStorage.removeItem(K);}catch(x){}}
-      run(h);});
-  }).catch(fail);
-})();
-</script></body></html>
+<title>FKL Arena · Beta abierta</title>
+<meta name="description" content="FKL Arena: juego de mesa de estrategia por turnos, adaptado al teléfono. Beta abierta para Android.">
+<link rel="icon" href="https://aakpqmqmlafzuwofuzgr.supabase.co/storage/v1/object/public/fkl/gimg/icon-192.png">
+<style>
+:root{--bg:#120c0b;--card:#1e1513;--ink:#f4ede5;--mut:#b4a79c;--or:#f08a4a;--tq:#3fd6c0;--li:#b58cff}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Roboto,Arial,sans-serif}
+main{max-width:520px;margin:0 auto;padding:28px 18px 40px}
+header{display:flex;align-items:center;gap:14px}
+header img{width:64px;height:64px;border-radius:16px;box-shadow:0 0 0 2px #3b2f2c}
+h1{margin:0;font-size:26px;letter-spacing:.06em}
+.tag{display:inline-block;margin-top:4px;font-size:12px;font-weight:800;letter-spacing:.12em;color:#1a0d06;background:linear-gradient(90deg,var(--li),var(--tq));padding:3px 9px;border-radius:999px}
+p{line-height:1.55;color:#e8ddd3}.mut{color:var(--mut);font-size:14px}
+.cta{display:block;text-align:center;margin:22px 0 10px;padding:16px;border-radius:14px;font-weight:900;font-size:18px;text-decoration:none;color:#1a0d06;background:linear-gradient(#f08a4a,#e2652a);box-shadow:0 6px 18px #e2652a44}
+.alt{display:block;text-align:center;padding:12px;border-radius:12px;text-decoration:none;color:var(--ink);background:var(--card);border:1px solid #ffffff1a;font-weight:700}
+.shots{display:flex;align-items:flex-start;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;margin:22px -18px;padding:0 18px}
+.shots img{flex:0 0 82%;width:82%;height:240px;object-fit:cover;scroll-snap-align:center;border-radius:14px;border:1px solid #ffffff14}
+h2{font-size:17px;margin:26px 0 8px}
+ol{padding-left:20px;line-height:1.6;color:#e8ddd3}li{margin:4px 0}
+.box{background:var(--card);border:1px solid #ffffff14;border-radius:14px;padding:14px 16px}
+footer{margin-top:30px;text-align:center;color:var(--mut);font-size:13px;line-height:1.6}footer a{color:var(--tq);text-decoration:none}
+</style><script>try{if(window.navigator.standalone||matchMedia("(display-mode: standalone)").matches)location.replace("jugar/");}catch(e){}</script>
+</head><body><main>
+<header><img src="https://aakpqmqmlafzuwofuzgr.supabase.co/storage/v1/object/public/fkl/gimg/icon-192.png" alt="FKL Arena"><div><h1>FKL ARENA</h1><span class="tag">BETA ABIERTA</span></div></header>
+<p>FKL Arena es un <b>juego de mesa</b> de estrategia por turnos. Nació en papel, con losetas, fichas y dados, y hoy lo estoy adaptando al teléfono para probarlo con más gente.</p>
+<p>Caza criaturas, crea tu arma y sobrevive en la arena. Gana quien queda en pie o junta 4 Marcas de Combate.</p>
+<a class="cta" href="https://aakpqmqmlafzuwofuzgr.supabase.co/storage/v1/object/public/fkl/fkl-arena-13.11.apk">📲 Descargar para Android (APK)</a>
+<a class="alt" href="jugar/">🌐 Web e iOS: jugar en el navegador</a>
+<p class="mut" style="text-align:center;margin:8px 0 0">En iPhone: abre el link en Safari y toca Compartir → «Agregar a inicio» para tenerlo como app.</p>
+<div class="shots">
+<img src="https://aakpqmqmlafzuwofuzgr.supabase.co/storage/v1/object/public/fkl/gimg/v147/arcotiro.jpg" alt="Disparo con arco">
+<img src="https://aakpqmqmlafzuwofuzgr.supabase.co/storage/v1/object/public/fkl/gimg/v147/balltiro.jpg" alt="Ballesta">
+<img src="https://aakpqmqmlafzuwofuzgr.supabase.co/storage/v1/object/public/fkl/gimg/v146/canje.jpg" alt="Canje de sellos">
+</div>
+<h2>Cómo instalarlo en Android</h2>
+<div class="box"><ol>
+<li>Toca <b>Descargar para Android</b>.</li>
+<li>Abre el archivo descargado (<i>fkl-arena</i>).</li>
+<li>Si el teléfono lo pide, permite <b>instalar apps de esta fuente</b>.</li>
+<li>Abre FKL Arena, crea tu cuenta con un nombre y una clave de números, y juega.</li>
+</ol><p class="mut" style="margin:6px 0 0">Sin correo y sin pagos. El juego se actualiza solo al abrirlo.</p></div>
+<h2>Estamos en prueba</h2>
+<p>Es una beta: puede haber errores y las reglas aún se ajustan. Tu opinión ayuda a que algún día salga en físico y en Google Play.</p>
+<footer>Instagram <a href="https://www.instagram.com/fakhala.arena/">@fakhala.arena</a><br>Contacto: contacto.fkl@gmail.com<br>Hecho por un desarrollador independiente</footer>
+</main></body></html>
