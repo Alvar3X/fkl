@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="FKL Arena">
+<meta name="theme-color" content="#120c0b">
+<link rel="apple-touch-icon" href="https://aakpqmqmlafzuwofuzgr.supabase.co/storage/v1/object/public/fkl/gimg/icon-192.png">
+<title>FKL Arena</title>
+<style>html,body{margin:0;height:100%;background:#120c0b;color:#f4ede5;font-family:system-ui,-apple-system,Roboto,Arial,sans-serif}
+#s{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:24px;box-sizing:border-box}
+#s b{letter-spacing:.3em;font-size:22px}#s small{color:#b4a79c;font-size:14px;max-width:300px;line-height:1.4}
+#s i{width:34px;height:34px;border-radius:50%;border:3px solid #3b2f2c;border-top-color:#f08a4a;animation:r 1s linear infinite}@keyframes r{to{transform:rotate(1turn)}}
+#s button{margin-top:6px;padding:12px 22px;border-radius:12px;border:0;font-weight:800;font-size:15px;background:linear-gradient(#f08a4a,#e2652a);color:#1a0d06}</style>
+</head><body><div id="s"><b>FKL ARENA</b><i></i><small id="m">Cargando la última versión…</small></div>
+<script>
+(function(){
+  var U='https://aakpqmqmlafzuwofuzgr.supabase.co/storage/v1/object/public/fkl/';
+  var K='fkl-web-h',KV='fkl-web-v';
+  function run(h){document.open();document.write(h);document.close();}
+  function cached(){try{var h=localStorage.getItem(K);if(h){run(h);return true;}}catch(e){}return false;}
+  function fail(){if(cached())return;document.getElementById('m').innerHTML='No se pudo cargar el juego. Revisa tu conexión.<br><button onclick="location.reload()">Reintentar</button>';}
+  var t=Date.now();
+  fetch(U+'version.json?t='+t,{cache:'no-store'}).then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(j){
+    var f=j.f||('fkl-arena-'+j.v+'.html');
+    try{if(localStorage.getItem(KV)===j.v){var h0=localStorage.getItem(K);if(h0&&h0.indexOf("const BUILD='"+j.v+"'")>=0)return run(h0);}}catch(e){}
+    return fetch(U+f+'?t='+t,{cache:'no-store'}).then(function(r){if(!r.ok)throw 0;return r.text();}).then(function(h){
+      if(h.indexOf("const BUILD='"+j.v+"'")<0)throw 0;
+      try{localStorage.removeItem('fkl-ota-h');localStorage.removeItem('fkl-ota-v');localStorage.setItem(K,h);localStorage.setItem(KV,j.v);}catch(e){try{localStorage.removeItem(K);}catch(x){}}
+      run(h);});
+  }).catch(fail);
+})();
+</script></body></html>
